@@ -1,0 +1,26 @@
+{
+  "name": "content-translator",
+  "version": "1.0.0",
+  "description": "多语言翻译与润色 - AI高质量翻译，支持中文/英文/日文/韩文/法文等20+语言",
+  "server": {
+    "type": "python",
+    "entry": "entry.py",
+    "transport": "stdio"
+  },
+  "tools": [
+    {
+      "name": "translate",
+      "description": "翻译文本 - 支持多种语言的高质量翻译与润色",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {"type": "string", "description": "要翻译的文本"},
+          "source_lang": {"type": "string", "description": "源语言代码 (auto=自动检测)", "default": "auto"},
+          "target_lang": {"type": "string", "description": "目标语言代码 (zh, en, ja, ko, fr, de, es, ru, ar, pt, it, nl, pl, tr, vi, th, id, ms, hi, bn 等)"},
+          "style": {"type": "string", "enum": ["formal", "casual", "professional"], "description": "翻译风格: formal(正式), casual(随意), professional(专业)", "default": "formal"}
+        },
+        "required": ["text", "target_lang"]
+      }
+    }
+  ]
+}
